@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="m-5">
+    <p-dataView [value]="goals" layout="grid">
+            <ng-template pTemplate="header">
+                <div class="flex flex-column md:flex-row md:justify-content-between">
+                    Your Goals
+                    <button pButton pRipple type="button" label="Add Goal" class="p-button-danger"></button>
+                </div>
+                
+            </ng-template>
+                <ng-template let-goal pTemplate="gridItem">
+                    <div class="col-12 md:col-4">
+                        <div class="goal-card">
+                            <p>Name: {{goal.name}}</p>
+                            <p>Description: {{goal.description}}</p>
+                            <p>Target Date: {{goal.targetDate}}</p>
+                            <p>Progress: {{goal.currentAmount}}/{{goal.targetAmount}}</p>
+                            <div class="goal-card-bottom">
+                                <button pButton pRipple type="button" label="Edit" class="p-button-danger"></button>
+                                <button pButton pRipple type="button" label="Delete" class="p-button-danger"></button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            <ng-template pTemplate="footer">Goals listed above</ng-template>
+        </p-dataView> 
+    </div>
+</div>
+

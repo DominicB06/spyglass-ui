@@ -7,15 +7,24 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 
+import {DataViewModule} from 'primeng/dataview';
+import {ButtonModule} from 'primeng/button';
+
+import { GoalCardComponent } from './goal-card/goal-card.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    GoalCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    DataViewModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+.goal-card{
+    margin: .5em;
+    border: 1px solid var(--surface-border);
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
+.goal-card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: .5em;
+}
