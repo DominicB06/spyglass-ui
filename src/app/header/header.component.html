@@ -3,17 +3,14 @@
         <div>
             <p-button type="text" (click)="sidebar = true" icon="pi pi-bars" class="p-button-rounded"></p-button>
         </div>
-        
     </div>
-    
     <div class="justify-content-center">
-        <p-image src="\assets\spyglass.png" alt="Image" height="100"></p-image>
+        <p-image src="\assets\spyglass.png" alt="Image" height="100" (click)="goHome()"></p-image>
     </div>
 
     <div>
     </div>
 </header> 
-
 
 <p-sidebar [(visible)]="sidebar" position="left" class="side-panel">
 
@@ -21,11 +18,14 @@
         <div class="text-xl font-bold"> Welcome User </div>
 
         <nav class="p-5">
+            <a [routerLink]="['/home']">Home</a>
+        </nav>
+
+        <nav class="p-5">
             <a [routerLink]="['/goals']">My Goals</a>
         </nav>
     </div>
     
-
 </p-sidebar>
 
 

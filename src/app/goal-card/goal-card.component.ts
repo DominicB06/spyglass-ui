@@ -17,6 +17,8 @@ export class GoalCardComponent implements OnInit {
   create: boolean = false
   update: boolean = false
   deposit: boolean = false
+  sidebar: boolean = false
+  
   tempGoal: Goal
   currentGoal: Goal= new Goal()
   depositAmount: number = 0

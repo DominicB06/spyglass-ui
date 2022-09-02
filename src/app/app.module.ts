@@ -25,15 +25,20 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {SidebarModule} from 'primeng/sidebar';
+import {CardModule} from 'primeng/card';
+import {CheckboxModule} from 'primeng/checkbox';
+import {PasswordModule} from 'primeng/password';
 
 import { GoalCardComponent } from './goal-card/goal-card.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    GoalCardComponent
+    GoalCardComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,10 @@ import { GoalCardComponent } from './goal-card/goal-card.component';
     ImageModule,
     ProgressBarModule,
     ToastModule,
-    SidebarModule
+    SidebarModule,
+    CardModule,
+    CheckboxModule,
+    PasswordModule
   ],
   providers: [
     ConfirmationService,
