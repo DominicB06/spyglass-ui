@@ -12,3 +12,23 @@
     justify-content: space-between;
     margin: .5em;
 }
+
+textarea:focus ~ label,
+textarea ~ label {
+  top: -.75em!important;
+  font-size: 12px!important;
+}
+
+.progress-bar{
+  background-color: blue;
+}
+
+.goal-name{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.goal-description{
+  font-size: .75rem;
+}
+

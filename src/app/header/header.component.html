@@ -1,11 +1,23 @@
 <header>
     <div>
-        Welcome User
+        <div>
+            <p-button type="text" (click)="sidebar = true" icon="pi pi-bars" class="p-button-rounded"></p-button>
+        </div>
+        
+    </div>
+    
+    <div class="justify-content-center">
+        <p-image src="\assets\spyglass.png" alt="Image" height="100"></p-image>
     </div>
 
+    <div>
+    </div>
+</header> 
+
+<p-sidebar [(visible)]="sidebar" position="left">
+    <div> Links below here </div>
+
     <nav>
-        <ul>
-            <li><a [routerLink]="['/goals']">My Goals</a></li>
-        </ul>
+        <a [routerLink]="['/goals']">My Goals</a>
     </nav>
-</header>
+</p-sidebar>

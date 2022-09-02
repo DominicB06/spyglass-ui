@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'primeflex/primeflex.css';
-@import 'primeng/resources/themes/luna-pink/theme.css';
+@import 'primeng/resources/themes/luna-green/theme.css';
+
+/* .button{
+    background-color: #dd7973;
+    border-color: #dd7973;
+}
+
+.button:hover{
+    background-color: #db4e46 !important;
+    border-color: #db4e46 !important;
+} */
