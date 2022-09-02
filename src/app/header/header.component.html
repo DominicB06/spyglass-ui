@@ -14,10 +14,18 @@
     </div>
 </header> 
 
-<p-sidebar [(visible)]="sidebar" position="left">
-    <div> Links below here </div>
 
-    <nav>
-        <a [routerLink]="['/goals']">My Goals</a>
-    </nav>
+<p-sidebar [(visible)]="sidebar" position="left" class="side-panel">
+
+    <div class="flex flex-column align-items-center">
+        <div class="text-xl font-bold"> Welcome User </div>
+
+        <nav class="p-5">
+            <a [routerLink]="['/goals']">My Goals</a>
+        </nav>
+    </div>
+    
+
 </p-sidebar>
+
+
