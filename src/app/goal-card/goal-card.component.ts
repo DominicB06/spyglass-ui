@@ -35,6 +35,7 @@ export class GoalCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
+      this.user = params['user']
       this.goalService.findByUser(params['user']).subscribe(resp =>{
         this.goals = resp
       })
