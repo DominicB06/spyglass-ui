@@ -56,22 +56,61 @@
 </div>
 
 <!-- Main section -->
-<div class="grid grid-nogutter surface-section text-800">
-    <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
-        <section>
-            <span class="block text-6xl font-bold mb-1">Start Saving for what Matters</span>
-            <div class="text-6xl text-primary font-bold mb-3">Achieve the things you want</div>
-            <p class="mt-0 mb-4 text-700 line-height-3">SpyGlass was designed to help you achieve your financial freedom. Start planning your finances and secure your future.</p>
-            
-            <button pButton pRipple label="Login" type="button" class="mr-3 p-button-raised" (click)="toggleLogin()"></button>
-            <button pButton pRipple label="Create Account" type="button" class="p-button-outlined" (click)="toggleCreate()"></button>
-        </section>
+<div class="center">
+    
+    <div class="grid grid-nogutter surface-section text-800">
+        <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+            <section>
+                <span class="block text-6xl font-bold mb-1">Start saving for what matters</span>
+                <div class="text-6xl text-primary font-bold mb-3">Achieve the things you want</div>
+                <p class="mt-0 mb-4 text-700 line-height-3">SpyGlass was designed to help you achieve your financial freedom. Start planning your finances and secure your future.</p>
+                
+                <button pButton pRipple label="Login" type="button" class="mr-3 p-button-raised" (click)="toggleLogin()"></button>
+                <button pButton pRipple label="Create Account" type="button" class="p-button-outlined" (click)="toggleCreate()"></button>
+            </section>
+        </div>
+        <div class="col-12 md:col-6 overflow-hidden">
+            <img src="https://images.pexels.com/photos/259165/pexels-photo-259165.jpeg" alt="Image" width="1000" class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+        </div>
     </div>
-    <div class="col-12 md:col-6 overflow-hidden">
-        <img src="https://images.pexels.com/photos/259165/pexels-photo-259165.jpeg" alt="Image" width="1000" class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+
+</div>
+
+
+<div class="footer flex flex-row justify-content-center align-items-center">
+
+    <div class="p-3">
+        Follow us:
     </div>
+
+    <div class="p-3">
+        <a href="https://twitter.com/Vanguard_Group" target="_blank">
+            <button pButton pRipple type="button" class="button" icon="pi pi-twitter" iconPos="right"></button>
+        </a>
+    </div>
+
+    <div class="p-3">
+        <a href="https://www.facebook.com/Vanguard/" target="_blank">
+            <button pButton pRipple type="button" class="button" icon="pi pi-facebook" iconPos="right"></button>
+        </a>
+    </div>
+        
+    <div class="p-3">
+        <a href="https://www.instagram.com/vanguardgroup/?hl=en" target="_blank">
+            <button pButton pRipple type="button" class="button" icon="pi pi-instagram" iconPos="right"></button>
+        </a>
+    </div>
+
+    <div class="p-3">
+        <a href="https://www.linkedin.com/company/vanguard/" target="_blank">
+            <button pButton pRipple type="button" class="button" icon="pi pi-linkedin" iconPos="right"></button>
+        </a>
+    </div>
+    
 </div>
 
 <p-toast position="top-center"></p-toast>
+
+
 
 
