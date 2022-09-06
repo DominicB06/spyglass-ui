@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from '../models/User';
+import { SharingService } from '../sharing.service';
 import { UserApiService } from '../user-api.service';
 
 @Component({
@@ -22,8 +23,10 @@ export class HomePageComponent implements OnInit {
   url!: string
 
   newUser: User = new User()
+  currentUser: User = new User()
 
-  constructor(private scroller: ViewportScroller, private router: Router, private messageService: MessageService, private userService: UserApiService) { }
+  constructor(private scroller: ViewportScroller, private router: Router, private messageService: MessageService, private userService: UserApiService,
+    private share: SharingService) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +45,10 @@ export class HomePageComponent implements OnInit {
 
   login(){
     console.log(this.email, this.password)
+    this.userService.findByEmail(this.email).subscribe(resp =>{ 
+      this.currentUser = resp
+      this.router.navigate(['/goals'], {queryParams: {user: this.currentUser.userId}})
+    })
   }
 
   saveUser(){
@@ -59,6 +66,5 @@ export class HomePageComponent implements OnInit {
     }else{
       this.messageService.add({severity:'error', summary:'Error', detail:'Passwords do not Match'})
     }
-
   }
 }

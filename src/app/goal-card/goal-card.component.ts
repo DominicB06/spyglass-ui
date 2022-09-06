@@ -3,6 +3,9 @@ import { GoalApiService } from '../goal-api.service';
 import { Goal } from '../models/Goal';
 import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
+import { SharingService } from '../sharing.service';
+import { User } from '../models/User';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-goal-card',
@@ -12,7 +15,7 @@ import {MessageService} from 'primeng/api';
 export class GoalCardComponent implements OnInit {
 
   goalService: GoalApiService
-  user: number = 1
+  user: number = 0
   goals!: Goal[]
   create: boolean = false
   update: boolean = false
@@ -26,16 +29,20 @@ export class GoalCardComponent implements OnInit {
   today: Date = new Date()
   tmrw : Date = new Date(this.today.getDate() + 1)
   
-  constructor(goalService: GoalApiService, private confirmationService: ConfirmationService, private messageService: MessageService) {
+  constructor(goalService: GoalApiService, private confirmationService: ConfirmationService, private messageService: MessageService, private route: ActivatedRoute) {
     this.goalService = goalService
     this.tempGoal = new Goal()
    }
 
   ngOnInit(): void {
-    this.goalService.findByUser(this.user).subscribe(resp =>{
-      console.log(resp)
-      this.goals = resp
+
+    this.route.queryParams.subscribe(params => {
+      this.goalService.findByUser(params['user']).subscribe(resp =>{
+        console.log(resp)
+        this.goals = resp
+      })
     })
+
     console.log(this.goals)
   }
 
