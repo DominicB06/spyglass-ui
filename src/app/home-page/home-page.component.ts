@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from '../models/User';
-import { SharingService } from '../sharing.service';
 import { UserApiService } from '../user-api.service';
 
 @Component({
@@ -25,8 +24,7 @@ export class HomePageComponent implements OnInit {
   newUser: User = new User()
   currentUser: User = new User()
 
-  constructor(private scroller: ViewportScroller, private router: Router, private messageService: MessageService, private userService: UserApiService,
-    private share: SharingService) { }
+  constructor(private scroller: ViewportScroller, private router: Router, private messageService: MessageService, private userService: UserApiService) { }
 
   ngOnInit(): void {
   }
@@ -44,10 +42,15 @@ export class HomePageComponent implements OnInit {
   }
 
   login(){
-    console.log(this.email, this.password)
-    this.userService.findByEmail(this.email).subscribe(resp =>{ 
+    this.userService.validateUser(this.email, this.password).subscribe(resp =>{ 
       this.currentUser = resp
-      this.router.navigate(['/goals'], {queryParams: {user: this.currentUser.userId}})
+      console.log(resp)
+      if(this.currentUser != null){
+        this.router.navigate(['/goals'], {queryParams: {user: this.currentUser.userId}})
+      }else{
+        this.messageService.add({severity:'error', summary:'Error', detail:'Incorrect Email or Password'})
+      }
+      
     })
   }
 
@@ -61,6 +64,7 @@ export class HomePageComponent implements OnInit {
         error: (e) => this.messageService.add({severity:'error', summary:'Error', detail:'Error Creating Account'}),
         complete: () => {
           this.messageService.add({severity:'success', summary:'Success', detail:'Account Successfully Created!'})
+          this.router.navigate(['/goals'], {queryParams: {user: this.newUser.userId}})
         }
       })
     }else{

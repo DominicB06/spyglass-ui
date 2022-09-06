@@ -3,8 +3,6 @@ import { GoalApiService } from '../goal-api.service';
 import { Goal } from '../models/Goal';
 import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
-import { SharingService } from '../sharing.service';
-import { User } from '../models/User';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -38,12 +36,9 @@ export class GoalCardComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.goalService.findByUser(params['user']).subscribe(resp =>{
-        console.log(resp)
         this.goals = resp
       })
     })
-
-    console.log(this.goals)
   }
 
   saveGoal(){
