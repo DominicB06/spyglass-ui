@@ -47,7 +47,10 @@ export class GoalCardComponent implements OnInit {
 
     this.goalService.save(this.tempGoal).subscribe({
       error: (e) => this.messageService.add({severity:'error', summary:'Error', detail:'Error occured creating this goal'}),
-      complete: () => this.messageService.add({severity:'success', summary:'Success', detail:'Goal created successfully!'})
+      complete: () => {
+        this.messageService.add({severity:'success', summary:'Success', detail:'Goal created successfully!'})
+        this.ngOnInit()
+      }
     })
 
     this.tempGoal = new Goal()
@@ -58,7 +61,10 @@ export class GoalCardComponent implements OnInit {
 
     this.goalService.update(this.currentGoal).subscribe({
       error: (e) => this.messageService.add({severity:'error', summary:'Error', detail:'Error occured updating this goal'}),
-      complete: () => this.messageService.add({severity:'success', summary:'Success', detail:'Goal updated successfully!'})
+      complete: () => {
+        this.messageService.add({severity:'success', summary:'Success', detail:'Goal updated successfully!'})
+        this.ngOnInit()
+      }
     })
 
     this.currentGoal = new Goal()
@@ -70,7 +76,10 @@ export class GoalCardComponent implements OnInit {
       accept: () => {
         this.goalService.delete(goalId).subscribe({
               error: (e) => this.messageService.add({severity:'error', summary:'Error', detail:'Error occured deleting this goal'}),
-              complete: () => this.messageService.add({severity:'success', summary:'Success', detail:'Goal deleted successfully!'})
+              complete: () => {
+                this.messageService.add({severity:'success', summary:'Success', detail:'Goal deleted successfully!'})
+                this.ngOnInit()
+              }
             })
       }
     })
