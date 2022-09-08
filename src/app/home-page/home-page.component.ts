@@ -46,6 +46,7 @@ export class HomePageComponent implements OnInit {
       this.currentUser = resp
       console.log(resp)
       if(this.currentUser != null){
+        sessionStorage.setItem('currentUser', this.currentUser.userId.toString())
         this.router.navigate(['/goals'], {queryParams: {user: this.currentUser.userId}})
       }else{
         this.messageService.add({severity:'error', summary:'Error', detail:'Incorrect Email or Password'})
@@ -64,11 +65,20 @@ export class HomePageComponent implements OnInit {
         error: (e) => this.messageService.add({severity:'error', summary:'Error', detail:'Error Creating Account'}),
         complete: () => {
           this.messageService.add({severity:'success', summary:'Success', detail:'Account Successfully Created!'})
+          sessionStorage.setItem('currentUser', this.newUser.userId.toString())
           this.router.navigate(['/goals'], {queryParams: {user: this.newUser.userId}})
         }
       })
     }else{
       this.messageService.add({severity:'error', summary:'Error', detail:'Passwords do not Match'})
     }
+  }
+
+  checkCurrentUser(): any{
+      return sessionStorage.getItem('currentUser')
+  }
+
+  logout(){
+    sessionStorage.setItem('currentUser', '0')
   }
 }

@@ -16,6 +16,20 @@ export class HeaderComponent implements OnInit {
   }
 
   goHome(){
+    this.sidebar = false
     this.router.navigate(['/', 'home']);
+  }
+
+  logout(){
+    sessionStorage.setItem('currentUser', '0')
+    this.sidebar = false
+  }
+
+  getUser(): any{
+    return sessionStorage.getItem('currentUser')
+  }
+
+  toggleSidebar(){
+    this.sidebar = !this.sidebar
   }
 }

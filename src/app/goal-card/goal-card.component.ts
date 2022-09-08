@@ -3,7 +3,9 @@ import { GoalApiService } from '../goal-api.service';
 import { Goal } from '../models/Goal';
 import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserApiService } from '../user-api.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-goal-card',
@@ -27,7 +29,8 @@ export class GoalCardComponent implements OnInit {
   today: Date = new Date()
   tmrw : Date = new Date(this.today.getDate() + 1)
   
-  constructor(goalService: GoalApiService, private confirmationService: ConfirmationService, private messageService: MessageService, private route: ActivatedRoute) {
+  constructor(goalService: GoalApiService, private confirmationService: ConfirmationService, private messageService: MessageService, private route: ActivatedRoute, private userService: UserApiService, 
+    private router: Router) {
     this.goalService = goalService
     this.tempGoal = new Goal()
    }
@@ -36,9 +39,17 @@ export class GoalCardComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.user = params['user']
-      this.goalService.findByUser(params['user']).subscribe(resp =>{
-        this.goals = resp
-      })
+
+      let currentUser = sessionStorage.getItem('currentUser')
+      
+      if(currentUser != this.user.toString()){
+        this.router.navigate(['/', 'home']);
+      }else{
+        this.goalService.findByUser(params['user']).subscribe(resp =>{
+          this.goals = resp
+        })
+      }
+      
     })
   }
 
@@ -121,4 +132,5 @@ export class GoalCardComponent implements OnInit {
 
     return formatter.format(dollar)
   }
+
 }

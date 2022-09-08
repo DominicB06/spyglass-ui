@@ -1,34 +1,36 @@
 <header>
     <div>
-        <!-- <div>
+        <div *ngIf="getUser() != '0'">
             <p-button type="text" (click)="sidebar = true" icon="pi pi-bars" class="p-button-rounded"></p-button>
-        </div> -->
+        </div>
     </div>
     <div class="justify-content-center">
         <p-image src="\assets\spyglass.png" alt="Image" height="100" (click)="goHome()"></p-image>
     </div>
-
     <div>
+        
     </div>
+        
 </header> 
 
-
-
-
-<!-- <p-sidebar [(visible)]="sidebar" position="left" class="side-panel">
+<p-sidebar [(visible)]="sidebar" position="left" class="side-panel">
 
     <div class="flex flex-column align-items-center">
         <div class="text-xl font-bold"> Welcome User </div>
 
         <nav class="p-5">
-            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['/home']" (click)="toggleSidebar()">Home</a>
         </nav>
 
         <nav class="p-5">
-            <a [routerLink]="['/goals']">My Goals</a>
+            <a [routerLink]="['/goals']" [queryParams]="{user: getUser()}" (click)="toggleSidebar()">My Goals</a>
         </nav>
+
+        <div class="p-5">
+            <a [routerLink]="['/home']" (click)="logout()">Logout</a>
+        </div>
     </div>
     
-</p-sidebar> -->
+</p-sidebar>
 
 

@@ -65,8 +65,9 @@
                 <div class="text-6xl text-primary font-bold mb-3">Achieve the things you want</div>
                 <p class="mt-0 mb-4 text-700 line-height-3">SpyGlass was designed to help you achieve your financial freedom. Start planning your finances and secure your future.</p>
                 
-                <button pButton pRipple label="Login" type="button" class="mr-3 p-button-raised" (click)="toggleLogin()"></button>
-                <button pButton pRipple label="Create Account" type="button" class="p-button-outlined" (click)="toggleCreate()"></button>
+                <button *ngIf="checkCurrentUser() == '0'" pButton pRipple label="Login" type="button" class="mr-3 p-button-raised" (click)="toggleLogin()"></button>
+                <button *ngIf="checkCurrentUser() == '0'" pButton pRipple label="Create Account" type="button" class="p-button-outlined" (click)="toggleCreate()"></button>
+                <button *ngIf="checkCurrentUser() != '0'" pButton pRipple label="Logout" type="button" class="mr-3 p-button-raised" (click)="logout()"></button>
             </section>
         </div>
         <div class="col-12 md:col-6 overflow-hidden">
