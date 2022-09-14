@@ -1,13 +1,16 @@
+import { User } from "./User"
+
 export class Goal{
     goalId: number
     name: string
     description: string
     picture: string
-    targetDate: string
+    targetDate: Date
     targetAmount: number
     currentAmount: number
+    user: User
 
-    constructor(goalId:number = 0, name:string = '', description:string = '', picture:string = '', targetDate:string = '', targetAmount:number = 0, currentAmount:number = 0){
+    constructor(goalId = 0, name = '', description = '', picture = '', targetDate = new Date(), targetAmount = 0, currentAmount = 0, user = new User()){
         this.goalId = goalId
         this.name = name
         this.description = description
@@ -15,5 +18,6 @@ export class Goal{
         this.targetDate = targetDate
         this.targetAmount = targetAmount
         this.currentAmount = currentAmount
+        this.user = user
     }
 }

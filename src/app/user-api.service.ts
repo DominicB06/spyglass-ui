@@ -24,6 +24,10 @@ export class UserApiService {
     return this.http.get(`${this.baseUrl}/user/email/${email}`)
   }
 
+  validateUser(email: string, password:string): Observable<any>{
+    return this.http.get(`${this.baseUrl}/validate/${email}/${password}`)
+  }
+
   save(user: User): Observable<any>{
     return this.http.post(this.baseUrl, user)
   }
